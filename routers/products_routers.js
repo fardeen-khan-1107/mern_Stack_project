@@ -1,11 +1,11 @@
 import express from "express"
-import {add,remove} from  "../Controllers/Product_Controllers.js"
+import {add,remove,get_data} from  "../Controllers/Product_Controllers.js"
 
 const router = express.Router();
 
 router.post("/add", add);
 
-router.get("/add",add);
+router.get("/get_data",get_data);
 
 router.delete("/remove/:id",remove);
 

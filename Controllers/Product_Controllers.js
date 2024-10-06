@@ -19,8 +19,16 @@ const add = async (req, res) => {
 };
 
 
-//
-
+const get_data=async(req,res)=>{
+  try{
+    const data=await products.find({});
+    res.status(200).json(data);
+    console.log(data);
+  }
+  catch(error){
+    console.error("There is something went wrong:",error.message);
+  }
+}
 
 
 //for deleteing the data
@@ -40,4 +48,4 @@ catch(error){
 }
 }
 
-export {add,remove};
+export {add,remove,get_data};
