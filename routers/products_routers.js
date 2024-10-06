@@ -1,8 +1,12 @@
 import express from "express"
-import {add} from "../Controllers/Product_Controllers.js"
+import {add,remove} from  "../Controllers/Product_Controllers.js"
 
-const app=express.Router();
+const router = express.Router();
 
-app.post("/",add);
+router.post("/add", add);
 
-export default app;
+router.get("/add",add);
+
+router.delete("/remove/:id",remove);
+
+export default router;
