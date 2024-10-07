@@ -9,4 +9,6 @@ router.get("/get_data",get_data);
 
 router.delete("/remove/:id",remove);
 
+//more routes to be make
+
 export default router;
