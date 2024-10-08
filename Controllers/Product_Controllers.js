@@ -18,6 +18,7 @@ const add = async (req, res) => {
   }
 };
 
+//for getting data from the backend
 
 const get_data=async(req,res)=>{
   try{
@@ -27,6 +28,21 @@ const get_data=async(req,res)=>{
   }
   catch(error){
     console.error("There is something went wrong:",error.message);
+  }
+}
+
+
+//for updating data 
+
+const update=async(req,res)=>{
+  try{
+    const {id}=req.params;
+    const update=await products.findByIdAndUpdate(id,req.body,{new:true});
+    res.status(200).json({success:update,message:"data is updated sucessfully"});
+  }
+  catch(error){
+    console.error("There is something went wrong:",error.message);
+    res.status(500).json("Server error fix it")
   }
 }
 
@@ -48,4 +64,4 @@ catch(error){
 }
 }
 
-export {add,remove,get_data};
+export {add,remove,get_data,update};
