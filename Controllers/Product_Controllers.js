@@ -18,8 +18,8 @@ const add = async (req, res) => {
   }
 };
 
-//for getting data from the backend
 
+//for getting data from the backend
 const get_data=async(req,res)=>{
   try{
     const data=await products.find({});

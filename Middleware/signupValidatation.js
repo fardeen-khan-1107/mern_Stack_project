@@ -4,7 +4,7 @@ const signupValidatation= (req,res,next)=>{
     const Schema=Joi.object({
         name:Joi.string().min(4).max(100).required(),
         email:Joi.string().email().required(),
-        password:Joi.string().min(7).required()
+        password:Joi.string().min(5).required()
     });
     const {error}=Schema.validate(req.body);
     if(error){
@@ -14,9 +14,9 @@ const signupValidatation= (req,res,next)=>{
 }
 
 const loginValidatation=(req,res,next)=>{
-    const Schema=Join.object({
+    const Schema=Joi.object({
         email:Joi.string().email().required(),
-        password:Joi.string().min(7).required()
+        password:Joi.string().min(5).required()
     });
     const {error}=Schema.validate(req.body);
     if(error){
@@ -25,4 +25,4 @@ const loginValidatation=(req,res,next)=>{
     next();
 }
 
-export  {signupValidatation,loginValidatation}
+export  {signupValidatation,loginValidatation};
