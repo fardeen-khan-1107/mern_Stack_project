@@ -17,7 +17,7 @@ const signup=async (req,res)=>{
             email,
             password:hashingpassword
         })
-        await user1.save()
+        await user1.save()// save the data in database
         return res.status(201).json({message:"signup sucessful"})
     }
 }
