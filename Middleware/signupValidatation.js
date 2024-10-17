@@ -8,7 +8,8 @@ const signupValidatation= (req,res,next)=>{
     });
     const {error}=Schema.validate(req.body);
     if(error){
-        res.status(400).json({message:"bad request",error})
+        res.status(400).json({message:"bad request",error});
+
     }
     next();
 }
@@ -20,7 +21,7 @@ const loginValidatation=(req,res,next)=>{
     });
     const {error}=Schema.validate(req.body);
     if(error){
-        res.status(400).json({message:"bad request",error})
+        res.status(400).json({message:"bad request",error});
     }
     next();
 }

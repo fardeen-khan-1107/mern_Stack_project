@@ -3,12 +3,17 @@ import products from "../models/products.js"
 const add = async (req, res) => {
   try {
     const items = req.body;
+
     console.log(items);
+
     if (!items.name || !items.price || !items.image) {
       return res.status(400).json({ message: "Please provide complete product details." });
     }
+
     const newItems = new products(items);
+
     const result = await newItems.save();
+    
     res.status(201).json({message: "Product added successfully",
       data:result
     });

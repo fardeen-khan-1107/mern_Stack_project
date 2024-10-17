@@ -6,23 +6,24 @@ import jwt from "jsonwebtoken";
 const signup=async (req,res)=>{
     try{
         const {name,email,password}=req.body;
+        
         const user=await signin.findOne({email});
         if(user){
            return res.status(400).json({message:"use already exists"})
         }
-        else{
-        const hashingpassword=await bcrypt.hash(password,10);
-        const user1=new signin({
-            name,
-            email,
-            password:hashingpassword
-        })
-        await user1.save()// save the data in database
-        return res.status(201).json({message:"signup sucessful"})
-    }
-}
+            const hashingpassword=await bcrypt.hash(password,10);
+            const user1=new signin({
+                name,
+                email,
+                password:hashingpassword
+            })
+            if(name&&email&&password){
+                await user1.save()
+                return res.status(201).json({message:"signup sucessful"})
+            }
+        }
     catch(error){
-       return res.status(500).json({message:"Internal server error",error})
+        res.status(500).json({message:"Internal server error",error})
     }
 }
 
@@ -50,7 +51,7 @@ const login = async (req, res) => {
         return res.status(200).json({ message: "Login successful", token });
     }
     } catch (error) {
-        return res.status(500).json({ message: "Internal server error", error });
+         res.status(500).json({ message: "Internal server error", error });
     }
 };
 
