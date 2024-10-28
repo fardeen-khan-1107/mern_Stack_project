@@ -2,6 +2,7 @@ import products from "../models/products.js"
 
 const add = async (req, res) => {
   try {
+    //getting request form the frontend 
     const items = req.body;
 
     console.log(items);
@@ -9,7 +10,8 @@ const add = async (req, res) => {
     if (!items.name || !items.price || !items.image) {
       return res.status(400).json({ message: "Please provide complete product details." });
     }
-
+    
+    //creates a new instance or object and store in database
     const newItems = new products(items);
 
     const result = await newItems.save();

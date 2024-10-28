@@ -17,10 +17,8 @@ const signup=async (req,res)=>{
                 email,
                 password:hashingpassword
             })
-            if(name&&email&&password){
                 await user1.save()
                 return res.status(201).json({message:"signup sucessful"})
-            }
         }
     catch(error){
         res.status(500).json({message:"Internal server error",error})
@@ -40,7 +38,6 @@ const login = async (req, res) => {
         if (!isEqual) {
             return res.status(404).json({ message: "Authentication failed" });
         }
-        else{
         // Create and send token
         const token = jwt.sign(
             { email: user.email, _id: user._id },
@@ -49,7 +46,7 @@ const login = async (req, res) => {
         );
 
         return res.status(200).json({ message: "Login successful", token });
-    }
+    
     } catch (error) {
          res.status(500).json({ message: "Internal server error", error });
     }
